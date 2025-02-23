@@ -1,0 +1,161 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  padding: 25px;
+  font-family: Arial, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.heading {
+  margin: 0px;
+  padding-block: 20px;
+  text-align: center;
+
+  @media screen and (max-width:480px) {
+    font-size: 26px;
+  }
+}
+
+/* Light Theme */
+
+.editor-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 10px;
+}
+.toolbar {
+  padding-block: 8px;
+  display: flex;
+  align-items: center;
+}
+.toolbar button {
+  border: 1px solid #f1f1f1;
+  padding: 10px;
+  min-width: 25px;
+  height: 20px;
+  border-radius: 2px;
+  margin: 0 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: white;
+  text-transform: capitalize;
+
+  &:hover{
+    box-shadow: 1px 1px 0px #BFBDBD;
+  }
+
+  &::selection{
+    border: 1px solid black;
+  }
+  
+}
+
+.button-container{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.toolbar button img{
+    width: 12px;
+    height: 12px;
+}
+.editor {
+  min-height: 150px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  outline: none;
+}
+.preview-container {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+.preview-container h2{
+  @media screen and (max-width:480px) {
+    font-size: 18px;
+  }
+}
+.ai-suggestion.light {
+  background: #ffffe0;
+  padding: 5px;
+  margin-top: 10px;
+  transition: opacity 0.5s ease-in-out;
+  padding-top: 12px;
+}
+
+.ai-suggestion{
+  padding-top: 18px;
+}
+
+.ai-suggestion.dark{
+  background-color: #000000;
+  color: #ffffe0;
+}
+
+.theme-toggle {
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.theme-toggle:hover {
+  background: #0056b3;
+}
+
+.App.light {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Dark Theme */
+.App.dark {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+/* tooltip for buttons */
+/* Tooltip Styling */
+.toolbar button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+.toolbar button:hover::after {
+  opacity: 1;
+}
+
+/* Active button styling */
+.toolbar button.active {
+  border: 2px solid black;
+}
